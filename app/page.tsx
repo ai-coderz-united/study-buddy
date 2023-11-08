@@ -1,10 +1,16 @@
 import Image from 'next/image'
-import { LoginButton } from '@/components/LoginButtons'
+import { LoginButton, LogoutButton } from '@/components/LoginButtons'
+import { SessionLogger } from '@/components/SessionLogger'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth'
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions)
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <LoginButton />
+      {session !== null ? <LogoutButton /> : <LoginButton />}
+      <SessionLogger />
     </main>
   )
 }
