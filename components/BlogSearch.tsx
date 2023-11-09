@@ -24,8 +24,7 @@ export const BlogSearch = ({ blogs }:any) => {
           {blogs.map((blog:any) => (
             <CommandItem key={blog.id} value={blog.title}>
               <div className="flex flex-col space-y-4">
-                <h3 className="text-lg font-bold">{blog.title}</h3>
-                <div dangerouslySetInnerHTML={{__html: blog.content}} />
+                <a className="text-lg font-bold" href={'/blog/' + blog.id}>{blog.title}</a>
               </div>
             </CommandItem>
           ))}
