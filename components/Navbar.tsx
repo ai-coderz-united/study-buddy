@@ -51,10 +51,13 @@ export const Navbar = ({session}:any) => {
         <NavigationMenu className="m-5">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
+              <NavigationMenuTrigger>Pages</NavigationMenuTrigger>
               <NavigationMenuContent className="min-w-[400px]">
-                <NavigationMenuLink className="hover:bg-slate-50">
-                  <a href="/" className="px-40">Resources</a>
+                <NavigationMenuLink className="hover:bg-slate-50 flex flex-col items-center">
+                  <a href="/" className="w-full py-2 text-center">Home</a>
+                </NavigationMenuLink>
+                <NavigationMenuLink className="hover:bg-slate-50 flex flex-col items-center">
+                  <a href="/blog" className="w-full py-2 text-center">Blog</a>
                 </NavigationMenuLink>
               </NavigationMenuContent>
             </NavigationMenuItem>

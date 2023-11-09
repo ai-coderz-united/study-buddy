@@ -80,3 +80,11 @@
   top: 0;
   left: 0;
 }
+
+#sessionLogger {
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
+  z-index: 1000;
+  @apply text-xs;
+}
