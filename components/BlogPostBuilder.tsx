@@ -56,11 +56,11 @@ export const BlogPostBuilder = ({action}:any) => {
         <SheetTrigger>Create a Blog Post</SheetTrigger>
         <SheetContent>
           <SheetHeader>
-            <SheetTitle>Are you sure absolutely sure?</SheetTitle>
+            <SheetTitle>Create a new Blog Post with the form below</SheetTitle>
             <SheetDescription>
-              <form action={createBlogPost}>
+              <form action={createBlogPost} className="flex flex-col justify-center w-1/2 mx-auto">
                 <label htmlFor="title">Title</label>
-                <input type="text" name="title" id="title" />
+                <input type="text" name="title" id="title" className="border-[1px] border-black" />
                 <input type="hidden" name="content" value={content} />
                 <QuillEditor
                   value={content}

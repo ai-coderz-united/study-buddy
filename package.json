@@ -21,6 +21,7 @@
     "@tiptap/starter-kit": "^2.1.12",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "cmdk": "^0.2.0",
     "lucide-react": "^0.292.0",
     "next": "14.0.1",
     "next-auth": "^4.24.4",

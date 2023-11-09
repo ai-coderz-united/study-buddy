@@ -21,3 +21,12 @@ export const createBlogPost = async (formData:FormData) => {
     console.log(error);
   }
 }
+
+export const getBlogPosts = async () => {
+  try {
+    const blogs = await prisma.blogPost.findMany({});
+    return blogs;
+  } catch (error) {
+    console.log(error);
+  }
+}
