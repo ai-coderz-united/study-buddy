@@ -88,3 +88,27 @@
   z-index: 1000;
   @apply text-xs;
 }
+/* Setting up quill output formats */
+pre h1 {
+  @apply text-2xl;
+}
+
+pre h2 {
+  @apply text-xl;
+}
+
+pre h3 {
+  @apply text-lg;
+}
+
+pre ol {
+  @apply list-decimal list-inside;
+}
+
+pre ul {
+  @apply list-disc list-inside;
+}
+
+pre code {
+  @apply text-sm;
+}

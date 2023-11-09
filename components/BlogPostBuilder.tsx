@@ -11,6 +11,7 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
 import { createBlogPost } from '@/lib/actions';
+import { Markup } from 'interweave';
 
 const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
 
@@ -48,6 +49,7 @@ export const BlogPostBuilder = ({action}:any) => {
 
   const handleEditorChange = (newContent:any) => {
     setContent(newContent);
+    console.log(newContent);
   };
 
   return (
@@ -58,6 +60,7 @@ export const BlogPostBuilder = ({action}:any) => {
           <SheetHeader>
             <SheetTitle>Create a new Blog Post with the form below</SheetTitle>
             <SheetDescription>
+              <Preview content={content} />
               <form action={createBlogPost} className="flex flex-col justify-center w-1/2 mx-auto">
                 <label htmlFor="title">Title</label>
                 <input type="text" name="title" id="title" className="border-[1px] border-black" />
@@ -76,5 +79,11 @@ export const BlogPostBuilder = ({action}:any) => {
         </SheetContent>
       </Sheet>
     </>
+  )
+}
+
+const Preview = ({content}:any) => {
+  return (
+    <pre dangerouslySetInnerHTML={{__html: content}} />
   )
 }
