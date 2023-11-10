@@ -107,6 +107,11 @@ body {
   background-color: black;
   color: white;
 }
+
+.ql-editor {
+  max-height: 150px;
+  overflow-y: auto;
+}
 /* Setting up quill output formats */
 pre h1 {
   @apply text-2xl;
@@ -121,11 +126,18 @@ pre h3 {
 }
 
 pre ol {
-  @apply list-decimal list-inside;
+  @apply list-decimal list-inside ml-4;
 }
 
 pre ul {
-  @apply list-disc list-inside;
+  @apply list-disc list-inside ml-4;
+}
+
+pre a {
+  @apply text-blue-500;
+}
+pre a:hover {
+  @apply text-blue-700;
 }
 
 pre code {
