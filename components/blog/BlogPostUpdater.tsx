@@ -10,13 +10,13 @@ import {
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
-import { createBlogPost } from '@/lib/actions';
+import { updateBlogPost } from '@/lib/actions';
 import { Header } from "./BlogPostHeader";
-import { GrAddCircle } from 'react-icons/gr';
+import { BsFillPencilFill } from 'react-icons/bs';
 
 const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
 
-export const BlogPostBuilder = ({session}:any) => {
+export const BlogPostUpdater = ({blog,session}:any) => {
   const [content, setContent] = useState('');
 
   const quillModules = {
@@ -58,19 +58,20 @@ export const BlogPostBuilder = ({session}:any) => {
   return (
     <div id="blog-sheet-trigger">
       <Sheet>
-        <SheetTrigger className="px-4 py-2 text-3xl">
-          +
+        <SheetTrigger className="px-4 py-2 text-2xl">
+          <BsFillPencilFill />
         </SheetTrigger>
         <SheetContent className="bg-slate-50 overflow-y-scroll">
-          <Preview content={content} />
+          <Preview blog={blog} content={content} />
           <SheetHeader>
-            <SheetTitle className="mx-auto">Create a new Blog Post with the form below</SheetTitle>
+            <SheetTitle className="mx-auto">Update your blog post below</SheetTitle>
             <SheetDescription>
-              <form action={createBlogPost} className="flex flex-col justify-center w-1/2 mx-auto">
+              <form action={updateBlogPost} className="flex flex-col justify-center w-1/2 mx-auto">
                 <label htmlFor="title">Title</label>
-                <input type="text" name="title" id="title" className="border-[1px] border-black" />
+                <input type="text" name="title" id="title" defaultValue={blog.title} className="border-[1px] border-black" />
                 <input type="hidden" name="content" value={content} />
                 <input type="hidden" name="author" value={authorName} />
+                <input type="hidden" name="blogId" value={blog.id} />
                 <QuillEditor
                   value={content}
                   onChange={handleEditorChange}
@@ -91,6 +92,7 @@ export const BlogPostBuilder = ({session}:any) => {
 const Preview = ({content, blog}:any) => {
   return (
     <div className="m-20 p-10 bg-white">
+      <Header blog={blog} />
       <pre dangerouslySetInnerHTML={{__html: content}} />
     </div>
   )

@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { Header } from "@/components/blog/BlogPostHeader"
 import { DeleteButton } from "@/components/DeleteButton"
-import { revalidatePath } from "next/cache"
+import { BlogPostUpdater } from "@/components/blog/BlogPostUpdater"
 
 export default async function Blog({ params } : { params: { blog: string }}) {
   const session = await getServerSession(authOptions)
@@ -19,6 +19,7 @@ export default async function Blog({ params } : { params: { blog: string }}) {
   return (
     <div className="flex flex-col items-center justify-around min-h-screen">
       <Navbar session={session} />
+      {session && session?.user?.name === blog?.authorName ? <BlogPostUpdater blog={blog} /> : <></>}
       <div className="w-1/2 bg-white py-10 px-14">
         <Header blog={blog} />
         <pre dangerouslySetInnerHTML={{__html: blog?.content as string}}></pre>

@@ -48,3 +48,21 @@ export const deleteBlogPost = async (formData:FormData) => {
     console.log(error)
   }
 }
+
+export const updateBlogPost = async (formData:FormData) => {
+  try {
+    await prisma.blogPost.update({
+      where: {
+        id: formData.get('blogId') as string,
+      },
+      data: {
+        title: formData.get('title') as string,
+        content: formData.get('content') as string,
+        updatedAt: getDateTime(),
+      }
+    })
+    revalidatePath('/blog')
+  } catch (error) {
+    console.log(error)
+  }
+}
