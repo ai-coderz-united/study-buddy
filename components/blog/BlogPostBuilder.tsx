@@ -11,11 +11,10 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
 import { createBlogPost } from '@/lib/actions';
-import { Markup } from 'interweave';
 
 const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
 
-export const BlogPostBuilder = ({action,session}:any) => {
+export const BlogPostBuilder = ({session}:any) => {
   const [content, setContent] = useState('');
 
   const quillModules = {
@@ -58,7 +57,7 @@ export const BlogPostBuilder = ({action,session}:any) => {
     <div id="blog-sheet-trigger">
       <Sheet>
         <SheetTrigger className="px-4 py-2 text-2xl">+</SheetTrigger>
-        <SheetContent className="bg-slate-50">
+        <SheetContent className="bg-slate-50 overflow-y-scroll">
           <Preview content={content} />
           <SheetHeader>
             <SheetTitle className="mx-auto">Create a new Blog Post with the form below</SheetTitle>
@@ -73,7 +72,7 @@ export const BlogPostBuilder = ({action,session}:any) => {
                   onChange={handleEditorChange}
                   modules={quillModules}
                   formats={quillFormats}
-                  className="w-full h-[70%] mt-10 bg-white"
+                  className="w-full max-h-[200px] mt-10 bg-white"
                 />
                 <button type="submit">Submit</button>
               </form>
