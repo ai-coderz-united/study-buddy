@@ -23,7 +23,7 @@ import {
 export const Navbar = ({session}:any) => {
   if(!session) {
     return (
-      <div className="w-full flex justify-between items-center" id="navbar">
+      <div className="w-full flex justify-between items-center shadow-md" id="navbar">
         <NavigationMenu className="m-5">
           <NavigationMenuList>
             <NavigationMenuItem>
@@ -47,7 +47,7 @@ export const Navbar = ({session}:any) => {
     )
   } else {
     return (
-      <div className="w-full flex justify-between" id="navbar">
+      <div className="w-full flex justify-between shadow-md" id="navbar">
         <NavigationMenu className="m-5">
           <NavigationMenuList>
             <NavigationMenuItem>

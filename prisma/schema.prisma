@@ -20,12 +20,13 @@ model User {
 }
 
 model BlogPost {
-  id        String   @id @default(cuid()) @map("_id")
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-  title     String
-  content   String
-  published Boolean  @default(false) @map("is_published")
-  author    User?    @relation(fields: [authorId], references: [id])
-  authorId  String?  @map("author_id")
+  id         String  @id @default(cuid()) @map("_id")
+  createdAt  String
+  updatedAt  String
+  title      String
+  content    String
+  published  Boolean @default(false) @map("is_published")
+  author     User?   @relation(fields: [authorId], references: [id])
+  authorId   String? @map("author_id")
+  authorName String
 }

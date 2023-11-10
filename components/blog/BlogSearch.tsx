@@ -24,7 +24,7 @@ export const BlogSearch = ({ blogs }:any) => {
           {blogs.map((blog:any) => (
             <CommandItem key={blog.id} value={blog.title}>
               <div className="flex flex-col space-y-4">
-                <a className="text-lg font-bold" href={'/blog/' + blog.id}>{blog.title}</a>
+                <a className="" href={'/blog/' + blog.id}>{blog.title}</a>
               </div>
             </CommandItem>
           ))}

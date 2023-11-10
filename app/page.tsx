@@ -11,7 +11,6 @@ export default async function Home() {
   return (
     <main className='flex flex-col items-center justify-around min-h-screen'>
       {session ? <Navbar session={session} /> : <Navbar />}
-      <SessionLogger />
     </main>
   )
 }

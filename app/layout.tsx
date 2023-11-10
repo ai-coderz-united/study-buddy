@@ -4,6 +4,7 @@ import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
+import { SessionLogger } from '@/components/SessionLogger'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,6 +22,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {children}
+        <SessionLogger />
       </body>
     </html>
   )
