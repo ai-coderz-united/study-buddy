@@ -53,9 +53,9 @@ export const BlogPostBuilder = ({action}:any) => {
   };
 
   return (
-    <>
+    <div id="blog-sheet-trigger">
       <Sheet>
-        <SheetTrigger>Create a Blog Post</SheetTrigger>
+        <SheetTrigger className="px-4 py-2 text-2xl">+</SheetTrigger>
         <SheetContent>
           <SheetHeader>
             <SheetTitle>Create a new Blog Post with the form below</SheetTitle>
@@ -78,7 +78,7 @@ export const BlogPostBuilder = ({action}:any) => {
           </SheetHeader>
         </SheetContent>
       </Sheet>
-    </>
+    </div>
   )
 }
 
