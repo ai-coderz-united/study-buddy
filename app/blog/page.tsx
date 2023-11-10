@@ -2,8 +2,8 @@
 import {Navbar} from '../../components/Navbar'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '../../lib/auth'
-import { BlogPostBuilder } from '@/components/BlogPostBuilder'
-import { BlogSearch } from '@/components/BlogSearch'
+import { BlogPostBuilder } from '@/components/blog/BlogPostBuilder'
+import { BlogSearch } from '@/components/blog/BlogSearch'
 import { getBlogPosts } from '@/lib/actions'
 
 export default async function Blog(){
@@ -18,7 +18,7 @@ export default async function Blog(){
         <p className="text-2xl pb-10">Search for a blog post, or create a new one</p>
       </div>
       <BlogSearch blogs={blogs} />
-      <BlogPostBuilder />
+      <BlogPostBuilder session={session} />
     </main>
   )
 }
