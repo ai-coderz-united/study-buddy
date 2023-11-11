@@ -11,8 +11,7 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
 import { createBlogPost } from '@/lib/actions';
-import { Header } from "./BlogPostHeader";
-import { GrAddCircle } from 'react-icons/gr';
+import { BsArrowBarRight } from 'react-icons/bs';
 
 const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
 
@@ -62,7 +61,11 @@ export const BlogPostBuilder = ({session}:any) => {
           +
         </SheetTrigger>
         <SheetContent className="bg-slate-50 overflow-y-scroll">
-          <Preview content={content} />
+          <div className='flex items-center justify-center'>
+            <div className="w-1/6">{content}</div>
+            <BsArrowBarRight className="text-3xl" />
+            <Preview content={content} />
+          </div>
           <SheetHeader>
             <SheetTitle className="mx-auto">Create a new Blog Post with the form below</SheetTitle>
             <SheetDescription>
@@ -90,7 +93,7 @@ export const BlogPostBuilder = ({session}:any) => {
 
 const Preview = ({content, blog}:any) => {
   return (
-    <div className="m-20 p-10 bg-white">
+    <div className="m-20 p-10 bg-white w-1/2">
       <pre dangerouslySetInnerHTML={{__html: content}} />
     </div>
   )
